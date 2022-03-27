@@ -49,7 +49,7 @@ int main()
 
 	std::cout << "Done!" << std::endl;
 
-	
+
 	std::cout << "=== Test 3 ===" << std::endl;
 
 	{
@@ -58,9 +58,10 @@ int main()
 		 {4,3}
 		} });
 
-	
 
-		auto B = A.inv(A);
+
+	
+		auto B = A.inv();
 
 		assert(B.get(0, 0) == -3);
 		assert(B.get(0, 1) == 1);
@@ -68,103 +69,111 @@ int main()
 		assert(B.get(1, 1) == -1);
 	}
 
-std::cout << "Done!" << std::endl;
+	std::cout << "Done!" << std::endl;
 
 
 
-std::cout << "=== Test 4 ===" << std::endl;
+	std::cout << "=== Test 4 ===" << std::endl;
 
-{
+	{
 
-	mt::Matrix<double, 3, 3> A({ {
-			 {1, 0, 1},
-		 {8, 1, 5},
-		{0, 0, 1}
+		mt::Matrix<double, 3, 3> A({ {
+				 {1, 0, 1},
+			 {8, 1, 5},
+			{0, 0, 1}
+			} });
+
+
+		auto B = A.tran();
+
+		assert(B.get(0, 0) == 1);
+		assert(B.get(0, 1) == 8);
+		assert(B.get(0, 2) == 0);
+		assert(B.get(1, 0) == 0);
+		assert(B.get(1, 1) == 1);
+		assert(B.get(1, 2) == 0);
+		assert(B.get(2, 0) == 1);
+		assert(B.get(2, 1) == 5);
+		assert(B.get(2, 2) == 1);
+	}
+
+	std::cout << "Done!" << std::endl;
+
+	std::cout << "=== Test 5 ===" << std::endl;
+
+	{
+		Mat22d A({ {
+			 {1,1},
+			 {1,1}
+		} });
+
+		Mat22d B({ {
+			 {1,1},
+			 {1,1}
 		} });
 
 
-	auto B = A.tran(A);
+		auto Z = A + B;
 
-	assert(B.get(0, 0) == 1);
-	assert(B.get(0, 1) == 8);
-	assert(B.get(0, 2) == 0);
-	assert(B.get(1, 0) == 0);
-	assert(B.get(1, 1) == 1);
-	assert(B.get(1, 2) == 0);
-	assert(B.get(2, 0) == 1);
-	assert(B.get(2, 1) == 5);
-	assert(B.get(2, 2) == 1);
-}
+		assert(Z.get(0, 0) == 2);
+		assert(Z.get(0, 1) == 2);
+		assert(Z.get(1, 0) == 2);
+		assert(Z.get(1, 1) == 2);
 
-std::cout << "Done!" << std::endl;
+	}
 
-std::cout << "=== Test 5 ===" << std::endl;
+	std::cout << "Done!" << std::endl;
+	std::cout << "=== Test 6 ===" << std::endl;
 
-{
-	Mat22d A({ {
-		 {1,1},
-		 {1,1}
-	} });
+	{
+		Mat22d A({ {
+			 {1,1},
+			 {1,1}
+		} });
 
-	Mat22d B({ {
-		 {1,1},
-		 {1,1}
-	} });
+		Mat22d B({ {
+			 {1,1},
+			 {1,1}
+		} });
 
 
-	auto Z = A +B;
+		auto Z = A - B;
 
-	assert(Z.get(0, 0) == 2);
-	assert(Z.get(0, 1) == 2);
-	assert(Z.get(1, 0) == 2);
-	assert(Z.get(1, 1) == 2);
+		assert(Z.get(0, 0) == 0);
+		assert(Z.get(0, 1) == 0);
+		assert(Z.get(1, 0) == 0);
+		assert(Z.get(1, 1) == 0);
 
-}
+	}
 
-std::cout << "Done!" << std::endl;
-std::cout << "=== Test 6 ===" << std::endl;
+	std::cout << "Done!" << std::endl;
+	std::cout << "=== Test 7 ===" << std::endl;
 
-{
-	Mat22d A({ {
-		 {1,1},
-		 {1,1}
-	} });
-
-	Mat22d B({ {
-		 {1,1},
-		 {1,1}
-	} });
-
-
-	auto Z = A - B;
-
-	assert(Z.get(0, 0) == 0);
-	assert(Z.get(0, 1) == 0);
-	assert(Z.get(1, 0) == 0);
-	assert(Z.get(1, 1) == 0);
-
-}
-
-std::cout << "Done!" << std::endl;
-std::cout << "=== Test 7 ===" << std::endl;
-
-{
-	Mat22d A({ {
-		 {1,7},
-		 {6,-2}
-	} });
+	{
+		Mat22d A({ {
+			 {1,7},
+			 {6,-2}
+		} });
 
 
 
-	auto Z = A.det(A);
+		auto Z = A.det();
 
-	assert(Z == -44);
+		assert(Z == -44);
 
 
-}
+	}
 
-std::cout << "Done!" << std::endl;
+	std::cout << "Done!" << std::endl;
 
+
+	//Mat22d A({ {
+	//	 {1,2},
+	//	 {3,4}
+	//} });
+
+	//auto Z = A.inv();
+	//std::cin >> Z;
 
 
 	return 0;
