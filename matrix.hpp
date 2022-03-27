@@ -70,9 +70,9 @@ namespace mt
 					m_mat[i][j] = mat.m_mat[i][j];
 		}
 
-		int getN() const { return m_n; }
-		int getM() const { return m_m; }
-		int get(int i, int j) const { return m_mat[i][j]; }
+	    T getN() const { return m_n; }
+		T getM() const { return m_m; }
+		T get(int i, int j) const { return m_mat[i][j]; }
 		void set(int i, int j, T data) { m_mat[i][j] = data; }
 
 		// 
@@ -145,11 +145,12 @@ namespace mt
 			return tmp;
 		}
 
+
+
+
+	
+		Matrix<T, N, M> inv() {
 		
-
-
-		template<typename T, int N, int M>
-		Matrix<T, N, M> inv(const Matrix<T, N, M>& mat) {
 #ifdef MY_DEBUG
 			std::cout << "inversion" << std::endl;
 #endif
@@ -192,8 +193,8 @@ namespace mt
 			}
 		}
 
-		template<typename T, int N, int M>
-		Matrix<T, N, M> tran(const Matrix<T, N, M>& mat) {
+		//template<typename T, int N, int M>
+		Matrix<T, N, M> tran() {
 #ifdef MY_DEBUG
 			std::cout << "transponirovanie" << std::endl;
 #endif
@@ -208,8 +209,8 @@ namespace mt
 			std::cout << "Error" << std::endl;
 		}
 
-		template<typename T, int N, int M>
-		T det(const Matrix<T, N, M>& mat) {
+		//template<typename T, int N, int M>
+		T det() {
 #ifdef MY_DEBUG
 			std::cout << "determinal" << std::endl;
 #endif
@@ -284,4 +285,3 @@ namespace mt
 	using Mat22i = Matrix<int, 2, 2>;
 	using Mat22d = Matrix<double, 2, 2>;
 }
-
