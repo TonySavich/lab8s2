@@ -70,8 +70,8 @@ namespace mt
 					m_mat[i][j] = mat.m_mat[i][j];
 		}
 
-	    T getN() const { return m_n; }
-		T getM() const { return m_m; }
+	    int getN() const { return m_n; }
+		int getM() const { return m_m; }
 		T get(int i, int j) const { return m_mat[i][j]; }
 		void set(int i, int j, T data) { m_mat[i][j] = data; }
 
